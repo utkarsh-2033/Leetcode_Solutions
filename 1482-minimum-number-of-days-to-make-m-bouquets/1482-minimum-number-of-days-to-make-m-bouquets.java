@@ -1,44 +1,36 @@
 class Solution {
-    // int max(int[] arr){
-    //     int mx=Integer.MIN_VALUE;
-        // for(int i=0;i<arr.length;i++){
-        //     mx=Math.max(mx,arr[i]);
-        // }
-    //     return mx;
-    // }
-    // int min(int[] arr){
-    //     int min=Integer.MAX_VALUE;
-    //     for(int i=0;i<arr.length;i++){
-    //         min=Math.min(min,arr[i]);
-    //     }
-    //     return min;
-    // }
-    int NoOfBq(int day,int[] bloomDay,int k){
-        int c=0,n=0;
-        for(int i=0;i<bloomDay.length;i++){
-            if(day>=bloomDay[i]) c++;
-            else {
-                n+=c/k;
-                c=0;
+    public int noOfBouquet(int bloomDay[],int day , int k){
+        int bouquets=0,t=0;
+        for(int i:bloomDay){
+            if(day>=i){
+                t++;
+            }else{
+                bouquets+=t/k;
+                t=0;
             }
-        } n+=c/k;
-        return n;
+        }
+        bouquets+=t/k;
+        return bouquets;
     }
     public int minDays(int[] bloomDay, int m, int k) {
-        int mx=Integer.MIN_VALUE,min=Integer.MAX_VALUE;
-        for(int i=0;i<bloomDay.length;i++){
-            mx=Math.max(mx,bloomDay[i]);
-            min=Math.min(min,bloomDay[i]);
+        int n=bloomDay.length;
+        // imposssible if no. of flowers(n)< m*k(total flower required for m bouquets of k flower each)
+        if(n<m*k) return -1;
+        //BS on answers
+        // range-> min to max of array
+        int low=0,high=0,ans=-1;
+        for(int i:bloomDay){
+            low=Math.min(low,i);
+            high=Math.max(high,i);
         }
-        if(m*k>bloomDay.length) return -1;
-        int low=min,high=mx,mid,ans=-1;
         while(low<=high){
-            mid=low+(high-low)/2;
-            if(NoOfBq(mid,bloomDay,k)>=m) {
-                ans=mid;high=mid-1;
+            int mid=low+(high-low)/2;
+            if(noOfBouquet(bloomDay,mid,k)>=m){
+                ans=mid;
+                high=mid-1;
             }
             else low=mid+1;
-        }
+        } 
         return ans;
     }
 }
