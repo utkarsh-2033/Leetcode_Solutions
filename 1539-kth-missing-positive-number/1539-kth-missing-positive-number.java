@@ -1,17 +1,14 @@
 class Solution {
     public int findKthPositive(int[] arr, int k) {
-        int n=arr.length;
-        int max=arr[n-1];
-        HashSet<Integer> hs=new HashSet<>();
-        for(int i:arr) hs.add(i);
-        int c=1;
-        int ans=1;
-        while(c<=k){
-            if(!hs.contains(ans)){
-                c++;
-            }
-            ans++;
+        int low=0,high=arr.length-1;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            int noOfmissing=arr[mid]-(mid+1); // at idx mid- no of missing numbers
+            if(noOfmissing<k) low=mid+1;
+            else high=mid-1;
         }
-        return ans-1;
+        //now range(idx) in which missing number lie- high to low
+        int missingNumber=k+high+1;
+        return missingNumber;
     }
 }
