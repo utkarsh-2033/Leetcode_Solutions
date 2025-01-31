@@ -1,13 +1,13 @@
 class Solution {
     public boolean backtrack(char[][] board,String word,int row,int col,int n,int idx , int rows , int cols){
-        if(idx==n) return true;
+        if(idx==n) return true; //word found
         char temp = board[row][col];
-        board[row][col] = '#';
+        board[row][col] = '#'; //marking visited
+        //exploring the 4 directions separately
         if(row+1<rows && board[row+1][col]==word.charAt(idx)){ //down 
             if(backtrack(board,word,row+1,col,n,idx+1,rows,cols)) return true;
         }
         if(row-1>=0 && board[row-1][col]==word.charAt(idx)){  //up
-
             if(backtrack(board,word,row-1,col,n,idx+1,rows,cols)) return true;
         }
         if(col-1>=0 && board[row][col-1]==word.charAt(idx)){ //left
@@ -16,7 +16,6 @@ class Solution {
         if(col+1<cols && board[row][col+1]==word.charAt(idx)){ //right
             if(backtrack(board,word,row,col+1,n,idx+1,rows,cols)) return true;
         }
-        board[row][col] = temp;
         return false;
     }
     public boolean exist(char[][] board, String word) {
