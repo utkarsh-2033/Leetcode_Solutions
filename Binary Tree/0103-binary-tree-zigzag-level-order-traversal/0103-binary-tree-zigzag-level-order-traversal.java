@@ -27,7 +27,7 @@ class Solution {
                 TreeNode node=q.poll();
                 
                 if(flag) level.add(node.val);
-                else level.add(0,node.val);
+                else level.add(0,node.val); // adding at 0 position every time thus reverse order is obtained
                 if(node.left!=null) q.offer(node.left);
                 if(node.right!=null) q.offer(node.right);
             }
