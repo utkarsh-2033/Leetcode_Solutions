@@ -14,17 +14,21 @@
  * }
  */
 class Solution {
-    public void helper(TreeNode root, TreeNode prev[]){
-        if(root==null) return;
-        helper(root.right,prev);
-        helper(root.left,prev);
-        root.right=prev[0];
-        root.left=null;
-        prev[0]=root;
-    }
-    
+    //space optimising - avoiding recurr stack space
+    // morris preorder
     public void flatten(TreeNode root) {
-        TreeNode prev[]={null};
-        helper(root,prev);
+        TreeNode curr=root;
+        while(curr!=null){
+            if(curr.left!=null){
+                TreeNode pre=curr.left;
+                //finding righmost in right subtree
+                while(pre.right!=null) pre=pre.right;
+
+                pre.right=curr.right;
+                curr.right=curr.left;
+                curr.left=null;
+            }
+            curr=curr.right;
+        }
     }
 }
