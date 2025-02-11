@@ -1,4 +1,5 @@
- #📌 LeetCode Solutions 🚀
+#📌 LeetCode Solutions 🚀
+
 Created using [LeetHub v3](https://github.com/raphaelheinz/LeetHub-3.0)  
 
 This repository contains my **structured** and **optimized** solutions to **LeetCode problems**, categorized by topic. 
