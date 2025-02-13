@@ -10,12 +10,15 @@ class Solution {
         int m=grid.length;
         int n=grid[0].length;
         Queue<tuple> q=new LinkedList<>();
+        int cntfresh=0;
         //putting initial all rotten oranges to start traversal with
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if(grid[i][j]==2) q.offer(new tuple(i,j,0));
+                if(grid[i][j]==1) cntfresh++;
             }
         }
+        int newrotten=0;
         //to traverse in the 4 dircns
         int[] delrow={-1,0,1,0};
         int[] delcol={0,-1,0,1};
@@ -31,16 +34,17 @@ class Solution {
                 int ncol=col+delcol[i];
                 if(nrow>=0 && nrow<m && ncol>=0 && ncol<n && grid[nrow][ncol]==1){
                     grid[nrow][ncol]=2; //mark of visited (rotten)
-                    q.offer(new tuple(nrow,ncol,t+1));
+                    newrotten++;
+                    q.offer(new tuple(nrow,ncol,t+1)); 
                 }
             }
         }
         //checking if all fresh oranges are rotten or not
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                if(grid[i][j]==1) return -1;
-            }
-        }
-        return time;
+        // for(int i=0;i<m;i++){
+        //     for(int j=0;j<n;j++){
+        //         if(grid[i][j]==1) return -1;
+        //     }
+        // }
+        return (newrotten==cntfresh)? time:-1;
     }
 }
