@@ -10,6 +10,7 @@ This repository contains my **structured** and **optimized** solutions to **Leet
 ✅ **Linked List**  
 ✅ **Stack & Queue**  
 ✅ **Bit Manipulation** 
+✅ **Greedy Algorithm**  
 ✅ **Binary Trees (BT)**  
 ✅ **Binary Search Trees (BST)**   
 🚧 **More coming soon... (Heap, Graphs, DP, etc.)**  
