@@ -13,7 +13,8 @@ This repository contains my **structured** and **optimized** solutions to **Leet
 ✅ **Greedy Algorithm**  
 ✅ **Binary Trees (BT)**  
 ✅ **Binary Search Trees (BST)**   
-🚧 **More coming soon... (Heap, Graphs, DP, etc.)**  
+✅ **Graphs**   
+🚧 **More coming soon... (Heap, DP, etc.)**  
 
 ## 🎯 Current Focus  
 I’m currently focused on **consistently solving problems** and **improving my problem-solving skills**. Right now, I’m in the **learning phase**, covering the remaining topics **step by step**.  
