@@ -17,4 +17,4 @@ This repository contains my **structured** and **optimized** solutions to **Leet
 🚧 **More coming soon... (Heap, DP, etc.)**  
 
 ## 🎯 Current Focus  
-I’m currently focused on **consistently solving problems** and **improving my problem-solving skills**. Right now, I’m in the **learning phase**, covering the remaining topics **step by step**.  
+I’m currently focused on **consistently solving problems** and **improving my problem-solving skills**. 
