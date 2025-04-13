@@ -1,22 +1,22 @@
-class Solution {
-    private boolean f(int idx,int target,int arr[],int dp[][]){
-        if(target==0) return true;
-        if(idx==0) return arr[0]==target;
-        if(dp[idx][target]!=-1) return (dp[idx][target]==0)? false : true;
-        boolean nottake=f(idx-1,target,arr,dp);
-        boolean take=false;
-        if(arr[idx]<=target) take=f(idx-1,target-arr[idx],arr,dp);
-        dp[idx][target]=(take||nottake)?1:0;
-        return take||nottake;
+public class Solution {
+    public boolean partition(int[] nums, int idx, int target,Boolean dp[][]) {
+        if (target == 0) return true;  // base case-  subset found
+        if (idx < 0 || target < 0) return false;
+        if (dp[idx][target] != null) return dp[idx][target];
+
+        boolean include = partition(nums, idx - 1, target - nums[idx], dp);
+        boolean exclude = partition(nums, idx - 1, target, dp);
+
+        return dp[idx][target] = include || exclude;
     }
 
     public boolean canPartition(int[] nums) {
-        int n=nums.length;
-        int sum=0;
-        for(int i:nums) sum+=i;
-        if(sum%2!=0) return false; // if sum is odd , can not be divided into 2 eqaul sum
-        int dp[][]=new int[n][sum+1];
-        for(int row[]:dp) Arrays.fill(row,-1);
-        return f(n-1,sum/2,nums,dp);
+        int sum = 0;
+        for (int num : nums) sum += num;
+        if (sum % 2 != 0) return false;
+        int target = sum / 2;
+        int n = nums.length;
+        Boolean[][] dp = new Boolean[n][target + 1];
+        return partition(nums, n - 1, target, dp);
     }
 }
