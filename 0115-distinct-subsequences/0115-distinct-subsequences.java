@@ -1,19 +1,20 @@
 class Solution {
-   
+    //space optimizes - using 2 1d array
     public int numDistinct(String s, String t) {
         int n = s.length();
         int m = t.length();
-        int dp[][] = new int[n + 1][m + 1];
-        for (int i = 0; i < n + 1; i++)
-            dp[i][0] = 1; //base case (j==0)
+        int prev[]=new int[m+1];
+        int curr[]=new int[m+1];
+            prev[0] = 1; curr[0]=1;
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
                 if (s.charAt(i - 1) == t.charAt(j - 1))
-                    dp[i][j] = dp[i - 1][j - 1]  + dp[i - 1 ][j];
+                    curr[j] = prev[j - 1]  + prev[j];
                 else
-                    dp[i][j] = dp[i - 1][j];
+                    curr[j] = prev[j];
             }
+            prev=curr.clone();
         }
-        return dp[n][m];
+        return curr[m];
     }
 }
