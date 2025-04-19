@@ -1,20 +1,20 @@
 class Solution {
+    //space-optimized - using single 2 size 1d array
     public int maxProfit(int[] prices) {
         int n = prices.length;
-        int dp[][] = new int[n+1][2]; //no of states possible+1
-        int profit=0;
+        int ahead[] = new int[2]; 
         for (int idx = n - 1; idx >= 0; idx--) {
             for (int buy = 0; buy <= 1; buy++) {
                 if (buy == 1) {
-                    dp[idx][buy] = Math.max(-prices[idx] + dp[idx + 1][0],
-                            dp[idx + 1][1]);
+                   ahead[buy] = Math.max(-prices[idx] + ahead[0],
+                            ahead[1]);
                 } 
                 if(buy == 0) {
-                    dp[idx][buy] = Math.max(prices[idx] + dp[idx + 1][1],
-                            dp[idx + 1][0]);
+                    ahead[buy] = Math.max(prices[idx] + ahead[1],
+                            ahead[0]);
                 }
             }
         }
-        return dp[0][1];
+        return ahead[1];
     }
 }
