@@ -14,7 +14,7 @@ This repository contains my **structured** and **optimized** solutions to **Leet
 ✅ **Binary Trees (BT)**  
 ✅ **Binary Search Trees (BST)**   
 ✅ **Graphs**   
-🚧 **More coming soon... (Heap, DP, etc.)**  
+✅ **DP**   
 
 ## 🎯 Current Focus  
 I’m currently focused on **consistently solving problems** and **improving my problem-solving skills**. 
