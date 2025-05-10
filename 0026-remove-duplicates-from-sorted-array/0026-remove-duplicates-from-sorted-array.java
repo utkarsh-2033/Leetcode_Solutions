@@ -1,12 +1,10 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-       int i=0;
+        int i=1;//to track where the next number should be after avoiding duplcates
        for(int j=1;j<nums.length;j++){
-        if(nums[i]!=nums[j]){
-            nums[i+1]=nums[j];
-            i++;
-        }
-       } 
-       return i+1;
+        if(nums[j]==nums[j-1]) continue; // avoiding duplicates like in 3sum
+        nums[i++]=nums[j];
+       }
+       return i;
     }
 }
